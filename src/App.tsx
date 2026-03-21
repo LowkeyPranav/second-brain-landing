@@ -116,9 +116,9 @@ const Navbar = () => {
           <button className="hidden md:block p-2 text-white/40 hover:text-white transition-colors">
             <Search className="w-6 h-6" />
           </button>
-          <button className="px-10 py-3.5 rounded-xl bg-white text-brand-bg text-base font-black hover:bg-brand-accent transition-all hover:scale-105 active:scale-95 shadow-lg">
+          <a href="https://second-brain-silk-theta.vercel.app/" className="px-10 py-3.5 rounded-xl bg-white text-brand-bg text-base font-black hover:bg-brand-accent transition-all hover:scale-105 active:scale-95 shadow-lg">
             Get Started
-          </button>
+          </a>
         </div>
 
         <button className="md:hidden text-white" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
@@ -144,9 +144,9 @@ const Navbar = () => {
                 {item.name}
               </a>
             ))}
-            <button className="w-full py-3 rounded-xl bg-white text-brand-bg font-bold">
+            <a href="https://second-brain-silk-theta.vercel.app/" className="w-full py-3 rounded-xl bg-white text-brand-bg font-bold text-center block">
               Get Started
-            </button>
+            </a>
           </motion.div>
         )}
       </AnimatePresence>
