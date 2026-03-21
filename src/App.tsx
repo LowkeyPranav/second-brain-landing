@@ -38,12 +38,10 @@ import {
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
-// Utility for tailwind classes
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-// Mock data for the performance chart
 const performanceData = [
   { day: 'Mon', score: 65, mastery: 40 },
   { day: 'Tue', score: 72, mastery: 45 },
@@ -53,6 +51,8 @@ const performanceData = [
   { day: 'Sat', score: 92, mastery: 75 },
   { day: 'Sun', score: 88, mastery: 82 },
 ];
+
+const APP_URL = 'https://app.leftbrain.in';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -73,27 +73,29 @@ const Navbar = () => {
 
   return (
     <nav className={cn(
-      "fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-8 py-6",
+      "fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-4 md:px-8 py-4 md:py-6",
       isScrolled ? "bg-brand-bg/95 backdrop-blur-xl border-b border-brand-border" : "bg-transparent"
     )}>
-      <div className="max-w-[1440px] mx-auto flex items-center justify-between">
-        <div className="flex items-center gap-4 group cursor-pointer">
-          <div className="w-12 h-12 bg-brand-accent rounded-xl flex items-center justify-center shadow-[0_0_25px_rgba(0,209,178,0.4)] group-hover:scale-105 transition-transform">
+      <div className="max-w-[1440px] mx-auto flex items-center justify-between gap-4">
+        {/* Logo */}
+        <div className="flex items-center gap-3 group cursor-pointer flex-shrink-0">
+          <div className="w-10 h-10 md:w-12 md:h-12 bg-brand-accent rounded-xl flex items-center justify-center shadow-[0_0_25px_rgba(0,209,178,0.4)] group-hover:scale-105 transition-transform">
             <div className="flex gap-1.5">
-              <div className="w-2 h-6 bg-white rounded-full" />
-              <div className="w-2 h-6 bg-white rounded-full" />
+              <div className="w-2 h-5 md:h-6 bg-white rounded-full" />
+              <div className="w-2 h-5 md:h-6 bg-white rounded-full" />
             </div>
           </div>
           <div className="flex flex-col">
-            <span className="font-display text-2xl font-bold tracking-tight leading-none">
+            <span className="font-display text-lg md:text-2xl font-bold tracking-tight leading-none">
               Second Brain
             </span>
-            <span className="text-[12px] text-brand-accent font-semibold tracking-widest mt-1.5 uppercase">
+            <span className="text-[10px] md:text-[12px] text-brand-accent font-semibold tracking-widest mt-1 uppercase hidden sm:block">
               Your Mind's Ultimate Upgrade.
             </span>
           </div>
         </div>
 
+        {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-3 bg-white/5 p-1.5 rounded-2xl border border-white/5">
           {navItems.map((item) => (
             <a 
@@ -112,18 +114,25 @@ const Navbar = () => {
           ))}
         </div>
 
-        <div className="flex items-center gap-6">
-          <button className="hidden md:block p-2 text-white/40 hover:text-white transition-colors">
+        {/* Desktop CTA */}
+        <div className="hidden md:flex items-center gap-6">
+          <button className="p-2 text-white/40 hover:text-white transition-colors">
             <Search className="w-6 h-6" />
           </button>
-          <a href="https://second-brain-silk-theta.vercel.app/" className="px-10 py-3.5 rounded-xl bg-white text-brand-bg text-base font-black hover:bg-brand-accent transition-all hover:scale-105 active:scale-95 shadow-lg">
+          <a href={APP_URL} className="px-10 py-3.5 rounded-xl bg-white text-brand-bg text-base font-black hover:bg-brand-accent transition-all hover:scale-105 active:scale-95 shadow-lg">
             Get Started
           </a>
         </div>
 
-        <button className="md:hidden text-white" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-          {mobileMenuOpen ? <X /> : <Menu />}
-        </button>
+        {/* Mobile: CTA + Hamburger */}
+        <div className="flex md:hidden items-center gap-3">
+          <a href={APP_URL} className="px-4 py-2 rounded-xl bg-white text-brand-bg text-sm font-black hover:bg-brand-accent transition-all">
+            Get Started
+          </a>
+          <button className="text-white p-1" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+        </div>
       </div>
 
       <AnimatePresence>
@@ -144,9 +153,6 @@ const Navbar = () => {
                 {item.name}
               </a>
             ))}
-            <a href="https://second-brain-silk-theta.vercel.app/" className="w-full py-3 rounded-xl bg-white text-brand-bg font-bold text-center block">
-              Get Started
-            </a>
           </motion.div>
         )}
       </AnimatePresence>
@@ -189,7 +195,7 @@ export default function App() {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-8"
           >
             <Sparkles className="w-4 h-4 text-brand-accent" />
-            <span className="text-xs font-bold tracking-widest uppercase text-brand-accent">Powered by Gemini 3.1 Pro</span>
+            <span className="text-xs font-bold tracking-widest uppercase text-brand-accent">Powered by Gemini 2.0 Flash</span>
           </motion.div>
 
           <motion.h1 
@@ -217,9 +223,9 @@ export default function App() {
             transition={{ delay: 0.3 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
-            <button className="w-full sm:w-auto px-8 py-4 rounded-full bg-brand-accent text-brand-bg font-bold text-lg hover:scale-105 transition-transform flex items-center justify-center gap-2 shadow-[0_0_30px_rgba(0,255,136,0.2)]">
+            <a href={APP_URL} className="w-full sm:w-auto px-8 py-4 rounded-full bg-brand-accent text-brand-bg font-bold text-lg hover:scale-105 transition-transform flex items-center justify-center gap-2 shadow-[0_0_30px_rgba(0,255,136,0.2)]">
               Start Learning Free <ArrowRight className="w-5 h-5" />
-            </button>
+            </a>
             <button className="w-full sm:w-auto px-8 py-4 rounded-full glass font-bold text-lg hover:bg-white/10 transition-all">
               Watch Demo
             </button>
@@ -244,7 +250,6 @@ export default function App() {
               </div>
               
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-                {/* Left: Study Materials */}
                 <div className="lg:col-span-7 space-y-6 text-left">
                   <div className="flex items-center justify-between">
                     <div>
@@ -269,7 +274,6 @@ export default function App() {
                   </div>
                 </div>
 
-                {/* Right: Chat Assistant */}
                 <div className="lg:col-span-5">
                   <div className="glass rounded-2xl h-full flex flex-col border-brand-accent/10">
                     <div className="p-4 border-b border-white/5 flex items-center gap-2">
@@ -307,42 +311,12 @@ export default function App() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <FeatureCard 
-              icon={Upload}
-              title="Smart Material Repository"
-              description="Upload PDFs and text files. Instant AI summarization, high-yield takeaways, and full LaTeX support for complex formulas."
-              delay={0.1}
-            />
-            <FeatureCard 
-              icon={MessageSquare}
-              title="AI Chat Assistant"
-              description="Context-aware Q&A specifically about your notes. Grounded with Google Search to provide broader context when needed."
-              delay={0.2}
-            />
-            <FeatureCard 
-              icon={Zap}
-              title="Dynamic Quiz Engine"
-              description="Generate quizzes from Easy to Expert. Concept tagging and detailed LaTeX explanations for every single answer."
-              delay={0.3}
-            />
-            <FeatureCard 
-              icon={TrendingUp}
-              title="Progress Analysis"
-              description="Real-time mastery tracking. AI classifies errors into 'Silly' vs 'Concept' gaps to target your weaknesses precisely."
-              delay={0.4}
-            />
-            <FeatureCard 
-              icon={Target}
-              title="Strategic Coaching"
-              description="AI-recommended 'Next Best Action'. Custom lesson drills with exam tips and practice questions for your weak spots."
-              delay={0.5}
-            />
-            <FeatureCard 
-              icon={FileText}
-              title="Professional Report Cards"
-              description="Downloadable PDF reports with predictive scoring, 3-day action plans, and prioritized topic rankings."
-              delay={0.6}
-            />
+            <FeatureCard icon={Upload} title="Smart Material Repository" description="Upload PDFs and text files. Instant AI summarization, high-yield takeaways, and full LaTeX support for complex formulas." delay={0.1} />
+            <FeatureCard icon={MessageSquare} title="AI Chat Assistant" description="Context-aware Q&A specifically about your notes. Grounded with Google Search to provide broader context when needed." delay={0.2} />
+            <FeatureCard icon={Zap} title="Dynamic Quiz Engine" description="Generate quizzes from Easy to Expert. Concept tagging and detailed LaTeX explanations for every single answer." delay={0.3} />
+            <FeatureCard icon={TrendingUp} title="Progress Analysis" description="Real-time mastery tracking. AI classifies errors into 'Silly' vs 'Concept' gaps to target your weaknesses precisely." delay={0.4} />
+            <FeatureCard icon={Target} title="Strategic Coaching" description="AI-recommended 'Next Best Action'. Custom lesson drills with exam tips and practice questions for your weak spots." delay={0.5} />
+            <FeatureCard icon={FileText} title="Professional Report Cards" description="Downloadable PDF reports with predictive scoring, 3-day action plans, and prioritized topic rankings." delay={0.6} />
           </div>
         </div>
       </section>
@@ -352,32 +326,16 @@ export default function App() {
         <div className="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-brand-accent/20 to-transparent" />
         
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-          >
+          <motion.div initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
             <h2 className="text-4xl md:text-6xl font-display font-bold mb-8 leading-tight">
               The Science of <br />
               <span className="text-brand-accent italic">Effective Learning.</span>
             </h2>
             <div className="space-y-8">
               {[
-                { 
-                  title: "Active Recall", 
-                  desc: "Dynamic quizzes force your brain to retrieve information, strengthening neural pathways.",
-                  icon: CheckCircle2
-                },
-                { 
-                  title: "Spaced Repetition", 
-                  desc: "Our AI tracks your forgetting curve and schedules reviews at the optimal moment.",
-                  icon: TrendingUp
-                },
-                { 
-                  title: "Metacognition", 
-                  desc: "Mistake analysis helps you understand *how* you learn, not just *what* you learn.",
-                  icon: Brain
-                }
+                { title: "Active Recall", desc: "Dynamic quizzes force your brain to retrieve information, strengthening neural pathways.", icon: CheckCircle2 },
+                { title: "Spaced Repetition", desc: "Our AI tracks your forgetting curve and schedules reviews at the optimal moment.", icon: TrendingUp },
+                { title: "Metacognition", desc: "Mistake analysis helps you understand *how* you learn, not just *what* you learn.", icon: Brain }
               ].map((item, i) => (
                 <div key={i} className="flex gap-6">
                   <div className="flex-shrink-0 w-12 h-12 rounded-xl glass flex items-center justify-center">
@@ -392,12 +350,7 @@ export default function App() {
             </div>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="relative"
-          >
+          <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="relative">
             <div className="glass rounded-[3rem] p-12 aspect-square flex flex-col items-center justify-center text-center">
               <div className="w-32 h-32 bg-brand-accent/20 rounded-full flex items-center justify-center mb-8 relative">
                 <div className="absolute inset-0 bg-brand-accent/20 blur-2xl rounded-full animate-pulse" />
@@ -426,14 +379,12 @@ export default function App() {
       <section className="py-32 px-6">
         <div className="max-w-5xl mx-auto glass rounded-[3rem] p-12 md:p-20 text-center relative overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-brand-accent/10 to-transparent -z-10" />
-          
           <h2 className="text-4xl md:text-6xl font-display font-bold mb-8">Ready to upgrade <br /> your brain?</h2>
           <p className="text-white/60 text-lg mb-12 max-w-xl mx-auto">Join thousands of students and professionals using Second Brain to master complex subjects in record time.</p>
-          
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-            <button className="w-full sm:w-auto px-10 py-5 rounded-full bg-brand-accent text-brand-bg font-bold text-xl hover:scale-105 transition-transform shadow-[0_0_40px_rgba(0,255,136,0.3)]">
+            <a href={APP_URL} className="w-full sm:w-auto px-10 py-5 rounded-full bg-brand-accent text-brand-bg font-bold text-xl hover:scale-105 transition-transform shadow-[0_0_40px_rgba(0,255,136,0.3)] text-center">
               Get Started for Free
-            </button>
+            </a>
             <div className="flex items-center gap-2 text-white/40 text-sm">
               <ShieldCheck className="w-4 h-4" /> No credit card required
             </div>
@@ -461,9 +412,9 @@ export default function App() {
           <div>
             <h4 className="font-bold mb-6">Product</h4>
             <ul className="space-y-4 text-sm text-white/40">
-              <li><a href="#" className="hover:text-brand-accent transition-colors">Features</a></li>
-              <li><a href="#" className="hover:text-brand-accent transition-colors">Methodology</a></li>
-              <li><a href="#" className="hover:text-brand-accent transition-colors">Pricing</a></li>
+              <li><a href="#features" className="hover:text-brand-accent transition-colors">Features</a></li>
+              <li><a href="#methodology" className="hover:text-brand-accent transition-colors">Methodology</a></li>
+              <li><a href="#pricing" className="hover:text-brand-accent transition-colors">Pricing</a></li>
               <li><a href="#" className="hover:text-brand-accent transition-colors">Changelog</a></li>
             </ul>
           </div>
@@ -479,7 +430,7 @@ export default function App() {
           </div>
         </div>
         
-        <div className="max-w-7xl mx-auto mt-20 pt-8 border-t border-white/5 flex flex-col md:row items-center justify-between gap-4 text-[10px] uppercase tracking-widest text-white/20">
+        <div className="max-w-7xl mx-auto mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4 text-[10px] uppercase tracking-widest text-white/20">
           <p>© 2026 Second Brain AI. All rights reserved.</p>
           <div className="flex gap-8">
             <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
