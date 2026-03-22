@@ -87,7 +87,7 @@ const Navbar = () => {
           </div>
           <div className="flex flex-col">
             <span className="font-display text-lg md:text-2xl font-bold tracking-tight leading-none">
-              Second Brain
+              Left Brain
             </span>
             <span className="text-[10px] md:text-[12px] text-brand-accent font-semibold tracking-widest mt-1 uppercase hidden sm:block">
               Your Mind's Ultimate Upgrade.
@@ -214,7 +214,7 @@ export default function App() {
             transition={{ delay: 0.2 }}
             className="max-w-2xl mx-auto text-lg md:text-xl text-white/60 mb-12 leading-relaxed"
           >
-            Second Brain is an AI study coach that turns raw materials into a production-ready learning system. Analyze, quiz, and master any subject with data-driven insights.
+            Left Brain is an AI study coach that turns raw materials into a production-ready learning system. Analyze, quiz, and master any subject with data-driven insights.
           </motion.p>
 
           <motion.div 
@@ -307,7 +307,7 @@ export default function App() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20">
             <h2 className="text-3xl md:text-5xl font-display font-bold mb-6">Engineered for Mastery.</h2>
-            <p className="text-white/60 max-w-2xl mx-auto">Traditional studying is fragmented. Second Brain unifies your materials, analysis, and coaching into a single high-performance loop.</p>
+            <p className="text-white/60 max-w-2xl mx-auto">Traditional studying is fragmented. Left Brain unifies your materials, analysis, and coaching into a single high-performance loop.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -380,7 +380,7 @@ export default function App() {
         <div className="max-w-5xl mx-auto glass rounded-[3rem] p-12 md:p-20 text-center relative overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-brand-accent/10 to-transparent -z-10" />
           <h2 className="text-4xl md:text-6xl font-display font-bold mb-8">Ready to upgrade <br /> your brain?</h2>
-          <p className="text-white/60 text-lg mb-12 max-w-xl mx-auto">Join thousands of students and professionals using Second Brain to master complex subjects in record time.</p>
+          <p className="text-white/60 text-lg mb-12 max-w-xl mx-auto">Join thousands of students and professionals using Left Brain to master complex subjects in record time.</p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
             <a href={APP_URL} className="w-full sm:w-auto px-10 py-5 rounded-full bg-brand-accent text-brand-bg font-bold text-xl hover:scale-105 transition-transform shadow-[0_0_40px_rgba(0,255,136,0.3)] text-center">
               Get Started for Free
@@ -431,7 +431,7 @@ export default function App() {
         </div>
         
         <div className="max-w-7xl mx-auto mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4 text-[10px] uppercase tracking-widest text-white/20">
-          <p>© 2026 Second Brain AI. All rights reserved.</p>
+          <p>© 2026 Left Brain AI. All rights reserved.</p>
           <div className="flex gap-8">
             <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
