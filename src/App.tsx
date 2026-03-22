@@ -90,7 +90,7 @@ const Navbar = () => {
               Left Brain
             </span>
             <span className="text-[10px] md:text-[12px] text-brand-accent font-semibold tracking-widest mt-1 uppercase hidden sm:block">
-              Your Mind's Ultimate Upgrade.
+              Think Left. Think Smart.
             </span>
           </div>
         </div>
