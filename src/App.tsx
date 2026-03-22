@@ -205,7 +205,7 @@ export default function App() {
             className="text-5xl md:text-8xl font-display font-bold tracking-tight mb-8 leading-[1.1]"
           >
             Your Notes, <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-cyan-400">Your AI shit</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-cyan-400">Study like you mean it. </span>
           </motion.h1>
 
           <motion.p 
